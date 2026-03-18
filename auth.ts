@@ -1,0 +1,14 @@
+import NextAuth from "next-auth"
+import GitHub from "next-auth/providers/github"
+
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  providers: [GitHub],
+  pages: {
+    signIn: "/login", // カスタムログインページのパス
+  },
+  callbacks: {
+    authorized({ auth }) {
+      return !!auth?.user
+    },
+  },
+})
