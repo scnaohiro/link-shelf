@@ -92,7 +92,7 @@ export default async function Home({
       )}
 
       <div className="flex flex-col gap-4">
-        {links.map((link) => (
+        {links.map((link: typeof links[0]) => (
           <div key={link.id} className="border rounded p-4 flex gap-4 items-start">
             {link.imageUrl && (
               <Image
