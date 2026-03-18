@@ -118,7 +118,7 @@ export default async function Home({
               )}
               {link.tags.length > 0 && (
                 <div className="flex gap-1 mt-2">
-                  {link.tags.map((t) => (
+                  {link.tags.map((t: string) => (
                     <a
                       key={t}
                       href={`/?tag=${t}`}
