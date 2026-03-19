@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma"
 import ogs from "open-graph-scraper"
 import { revalidatePath } from "next/cache"
+import { redirect } from "next/navigation"
 
 export async function addLink(formData: FormData) {
   const url = formData.get("url") as string
@@ -23,6 +24,7 @@ export async function addLink(formData: FormData) {
   })
 
   revalidatePath("/")
+  redirect("/")
 }
 
 export async function deleteLink(id: string) {
