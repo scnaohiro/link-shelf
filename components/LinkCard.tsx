@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { deleteLink } from "@/actions/links"
-import type { Link as LinkType } from "@/type"
+import type { Link as LinkType } from "@/types"
 
 type LinkCardProps = {
   link: LinkType

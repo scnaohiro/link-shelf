@@ -1,4 +1,4 @@
-import type { Link as LinkType } from "@/type"
+import type { Link as LinkType } from "@/types"
 import { LinkCard } from "./LinkCard"
 
 type LinkListProps = {
