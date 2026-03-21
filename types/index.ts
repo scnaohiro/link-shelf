@@ -6,4 +6,5 @@ export type Link = {
   imageUrl: string | null
   tags: string[]
   createdAt: Date
+  isFavorite: boolean
 }

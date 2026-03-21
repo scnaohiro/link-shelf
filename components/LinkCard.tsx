@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { deleteLink } from "@/actions/links"
+import { deleteLink, toggleFavorite } from "@/actions/links"
 import type { Link as LinkType } from "@/types"
 
 type LinkCardProps = {
@@ -23,7 +23,20 @@ export function LinkCard({ link }: LinkCardProps) {
         </div>
       )}
       <div className="p-4">
+        <div className="flex items-center">
         <p className="text-xs text-gray-400 mb-1">{hostname}</p>
+        <form action={toggleFavorite.bind(null, link.id, link.isFavorite)}>
+              <button
+                type="submit"
+                className={`text-xs px-2 py-1 rounded transition-colors ${link.isFavorite
+                    ? "text-yellow-500 hover:text-yellow-700"
+                    : "text-gray-400 hover:text-gray-600"
+                  }`}
+              >
+                {link.isFavorite ? "★" : "☆"}
+              </button>
+            </form>
+            </div>
         <a
           href={link.url}
           target="_blank"
@@ -48,14 +61,22 @@ export function LinkCard({ link }: LinkCardProps) {
               </Link>
             ))}
           </div>
-          <form action={deleteLink.bind(null, link.id)}>
-            <button
-              type="submit"
-              className="text-xs text-red-400 hover:text-red-600 hover:bg-red-50 px-2 py-1 rounded transition-colors"
+          <div className="flex items-center gap-2">
+            <Link
+              href={`/edit/${link.id}`}
+              className="text-xs text-blue-400 hover:text-blue-600 hover:bg-blue-50 px-2 py-1 rounded transition-colors"
             >
-              削除
-            </button>
-          </form>
+              編集
+            </Link>
+            <form action={deleteLink.bind(null, link.id)}>
+              <button
+                type="submit"
+                className="text-xs text-red-400 hover:text-red-600 hover:bg-red-50 px-2 py-1 rounded transition-colors"
+              >
+                削除
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

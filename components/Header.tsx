@@ -1,13 +1,16 @@
-import { auth, signOut } from "@/auth"
 import Link from "next/link"
+import { auth, signOut } from "@/auth"
 
 export async function Header() {
   const session = await auth()
 
   return (
     <div className="flex justify-between items-center mb-8">
-      <h1 className="text-xl font-semibold tracking-tight">Link Shelf</h1>
+      <Link href="/"><h1 className="text-xl font-semibold tracking-tight">Link Shelf</h1></Link>
       <div className="flex items-center gap-3">
+        <Link href="/tags" className="text-sm text-gray-500 hover:text-gray-800">
+          タグ一覧
+        </Link>
         <span className="text-sm text-gray-400">
           {session?.user?.name}
         </span>

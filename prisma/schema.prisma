@@ -14,4 +14,5 @@ model Link {
   imageUrl    String?
   tags        String[]
   createdAt   DateTime @default(now())
+  isFavorite  Boolean  @default(false)
 }
